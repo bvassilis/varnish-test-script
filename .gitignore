@@ -1,6 +1,11 @@
-*.class
+target
+.project
+.metadata
+.classpath
+.settings/
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
