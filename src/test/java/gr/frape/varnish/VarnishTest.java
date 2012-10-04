@@ -13,6 +13,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.AbstractHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.CoreConnectionPNames;
+import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.junit.AfterClass;
@@ -25,7 +28,10 @@ public class VarnishTest {
 
     @BeforeClass
     public static void beforeClass() {
-        client = new DefaultHttpClient();
+        HttpParams params = new BasicHttpParams();
+        params.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 5000);
+        params.setParameter(CoreConnectionPNames.SO_TIMEOUT, 5000);
+        client = new DefaultHttpClient(params);
     }
 
     @AfterClass
